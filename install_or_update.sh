@@ -5,19 +5,17 @@ export SUDO_ASKPASS="${sudo_askpass}"
 export NO_AT_BRIDGE=1  # get rid of (ssh-askpass:25930): dbind-WARNING **: 18:46:12.019: Couldn't register with accessibility bus: Did not receive a reply.
 
 function set_lib_bash_permissions {
-    local user
-    user="$(printenv USER)"
-    $(command -v 2>/dev/null) chmod -R 0755 "/usr/local/lib_bash"
-    $(command -v 2>/dev/null) chmod -R +x /usr/local/lib_bash/*.sh
-    $(command -v 2>/dev/null) chown -R root /usr/local/lib_bash || "$(command -v 2>/dev/null)" chown -R "${user}" /usr/local/lib_bash || echo "giving up set owner" # there is no user root on travis
-    $(command -v 2>/dev/null) chgrp -R root /usr/local/lib_bash || "$(command -v 2>/dev/null)" chgrp -R "${user}" /usr/local/lib_bash || echo "giving up set group" # there is no user root on travis
+      chmod -R 0755 "/usr/local/lib_bash"
+      chmod -R +x /usr/local/lib_bash/*.sh
+      chown -R root /usr/local/lib_bash
+      chgrp -R root /usr/local/lib_bash
 }
 
 
 function install_lib_bash {
     echo "installing lib_bash"
-    $(command -v 2>/dev/null) rm -fR /usr/local/lib_bash
-    $(command -v 2>/dev/null) git clone https://github.com/bitranox/lib_bash.git /usr/local/lib_bash > /dev/null 2>&1
+      rm -fR /usr/local/lib_bash
+      git clone https://github.com/bitranox/lib_bash.git /usr/local/lib_bash > /dev/null 2>&1
     set_lib_bash_permissions
 }
 
@@ -25,7 +23,7 @@ function install_lib_bash {
 function install_or_update_lib_bash {
     if [[ -f "/usr/local/lib_bash/install_or_update.sh" ]]; then
         # file exists - so update
-        $(command -v 2>/dev/null) /usr/local/lib_bash/install_or_update.sh
+          /usr/local/lib_bash/install_or_update.sh
     else
         install_lib_bash
 
@@ -45,10 +43,10 @@ include_dependencies
 function set_lib_bash_wine_permissions {
     local user
     user="$(printenv USER)"
-    "$(cmd )" chmod -R 0755 /usr/local/lib_bash_wine
-    "$(cmd )" chmod -R +x /usr/local/lib_bash_wine/*.sh
-    "$(cmd )" chown -R root /usr/local/lib_bash_wine
-    "$(cmd )" chgrp -R root /usr/local/lib_bash_wine
+    chmod -R 0755 /usr/local/lib_bash_wine
+    chmod -R +x /usr/local/lib_bash_wine/*.sh
+    chown -R root /usr/local/lib_bash_wine
+    chgrp -R root /usr/local/lib_bash_wine
 }
 
 # if it is not installed on the right place, we install it on /usr/local/bin
@@ -75,8 +73,8 @@ function is_lib_bash_wine_up_to_date {
 
 function install_lib_bash_wine {
     clr_green "installing lib_bash_wine"
-    "$(cmd )" rm -fR /usr/local/lib_bash_wine
-    "$(cmd )" git clone https://github.com/bitranox/lib_bash_wine.git /usr/local/lib_bash_wine > /dev/null 2>&1
+     rm -fR /usr/local/lib_bash_wine
+     git clone https://github.com/bitranox/lib_bash_wine.git /usr/local/lib_bash_wine > /dev/null 2>&1
     set_lib_bash_wine_permissions
 }
 
@@ -87,8 +85,8 @@ function update_lib_bash_wine {
         (
             # create a subshell to preserve current directory
             cd /usr/local/lib_bash_wine  || fail "error in update_lib_bash_wine"
-            "$(cmd )" git fetch --all  > /dev/null 2>&1
-            "$(cmd )" git reset --hard origin/master  > /dev/null 2>&1
+             git fetch --all  > /dev/null 2>&1
+             git reset --hard origin/master  > /dev/null 2>&1
             set_lib_bash_wine_permissions
         )
 

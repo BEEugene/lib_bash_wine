@@ -63,7 +63,7 @@ function install_wine_machine {
     if [[ "${overwrite_existing_wine_machine}" == "True" ]] && [[ -d ${wine_prefix} ]]; then
          banner_warning "Overwriting old Wine Machine ${wine_prefix}"
          if [[ "${wine_prefix}" == "/home/${user}"* ]]; then
-            "$(cmd )" rm -Rf "${wine_prefix}"
+             rm -Rf "${wine_prefix}"
          else
             fail "can not remove wineprefix ${wine_prefix} because it does not belong to user ${user}"
          fi

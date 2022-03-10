@@ -7,7 +7,7 @@ export NO_AT_BRIDGE=1  # get rid of (ssh-askpass:25930): dbind-WARNING **: 18:46
 
 source ../900_000_lib_bash_wine.sh
 source ../001_000_install_wine.sh
-"$(cmd )"../install_or_update.sh
+../install_or_update.sh
 
 function run_tests {
     local wine_release

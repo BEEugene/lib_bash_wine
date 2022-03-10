@@ -26,7 +26,7 @@ function run_tests {
 	assert_pass "is_package_installed apt"
 
     # update libraries
-    "$(cmd )" ../install_or_update.sh
+     ../install_or_update.sh
 
 
     ### test library
