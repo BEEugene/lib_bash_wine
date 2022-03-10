@@ -254,11 +254,11 @@ function fix_wine_permissions {
 
     wine_cache_directory="$(get_wine_cache_directory_for_user "${user}")"
 
-    "$(cmd "sudo")" chown -R "${user}"."${user}" "${wine_prefix}"
-    "$(cmd "sudo")" chmod -R 0775 "${wine_prefix}"
+    "$(cmd )" chown -R "${user}"."${user}" "${wine_prefix}"
+    "$(cmd )" chmod -R 0775 "${wine_prefix}"
 
-    "$(cmd "sudo")" chown -R "${user}"."${user}" "${wine_cache_directory}" &>/dev/null
-    "$(cmd "sudo")" chmod -R 0775 "${wine_cache_directory}"  &>/dev/null
+    "$(cmd )" chown -R "${user}"."${user}" "${wine_cache_directory}" &>/dev/null
+    "$(cmd )" chmod -R 0775 "${wine_cache_directory}"  &>/dev/null
 }
 
 
@@ -290,17 +290,17 @@ function download_msi_file_to_winecache {
     msi_file_name="${3}"
 
     wine_cache_directory="$(get_wine_cache_directory_for_user "${username}")"
-    "$(cmd "sudo")" mkdir -p "${wine_cache_directory}"
-    "$(cmd "sudo")" chmod -R 0775 "${wine_cache_directory}"
+    "$(cmd )" mkdir -p "${wine_cache_directory}"
+    "$(cmd )" chmod -R 0775 "${wine_cache_directory}"
 
     debug "${dbg}" "wine_cache_directory = ${wine_cache_directory}, msi_file_name=${msi_file_name}, download_link=${download_link},"
 
     # shellcheck disable=SC2016 # Expressions don't expand in single quotes
     # we need additional quotes in the link, because of possible "&" in the link
-    retry "$(cmd "sudo")" wget -nv -c -O "${wine_cache_directory}/${msi_file_name}" '${download_link}'
+    retry "$(cmd )" wget -nv -c -O "${wine_cache_directory}/${msi_file_name}" '${download_link}'
 
-    "$(cmd "sudo")" chmod -R 0775 "${wine_cache_directory}"
-    "$(cmd "sudo")" chown -R "${username}.${username}" "${wine_cache_directory}"
+    "$(cmd )" chmod -R 0775 "${wine_cache_directory}"
+    "$(cmd )" chown -R "${username}.${username}" "${wine_cache_directory}"
 }
 
 

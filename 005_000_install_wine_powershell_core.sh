@@ -54,7 +54,7 @@ function install_powershell_core {
             ZIP=${zip_file_name}
             "
 
-    "$(cmd "sudo")" rm -Rf "${powershell_install_dir}"
+    "$(cmd )" rm -Rf "${powershell_install_dir}"
     mkdir -p "${powershell_install_dir}"
 
     clr_green "Download Powershell ${powershell_version} ${str_32_or_64_bit} Bit"
@@ -66,7 +66,7 @@ function install_powershell_core {
     clr_green "Adding path to wine registry: ${powershell_path_to_add}"
     prepend_path_to_wine_registry_path "${wine_prefix}" "C:/Program Files/PowerShell"
 
-    "$(cmd "sudo")" chmod -R 0755 "${powershell_install_dir}"
+    "$(cmd )" chmod -R 0755 "${powershell_install_dir}"
 
     banner "Test Powershell ${powershell_version}"
     wine pwsh -ExecutionPolicy unrestricted -Command "get-executionpolicy"

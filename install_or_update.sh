@@ -45,10 +45,10 @@ include_dependencies
 function set_lib_bash_wine_permissions {
     local user
     user="$(printenv USER)"
-    "$(cmd "sudo")" chmod -R 0755 /usr/local/lib_bash_wine
-    "$(cmd "sudo")" chmod -R +x /usr/local/lib_bash_wine/*.sh
-    "$(cmd "sudo")" chown -R root /usr/local/lib_bash_wine || "$(cmd "sudo")" chown -R "${user}" /usr/local/lib_bash_wine || echo "giving up set owner" # there is no user root on travis
-    "$(cmd "sudo")" chgrp -R root /usr/local/lib_bash_wine || "$(cmd "sudo")" chgrp -R "${user}" /usr/local/lib_bash_wine || echo "giving up set group" # there is no user root on travis
+    "$(cmd )" chmod -R 0755 /usr/local/lib_bash_wine
+    "$(cmd )" chmod -R +x /usr/local/lib_bash_wine/*.sh
+    "$(cmd )" chown -R root /usr/local/lib_bash_wine || "$(cmd )" chown -R "${user}" /usr/local/lib_bash_wine || echo "giving up set owner" # there is no user root on travis
+    "$(cmd )" chgrp -R root /usr/local/lib_bash_wine || "$(cmd )" chgrp -R "${user}" /usr/local/lib_bash_wine || echo "giving up set group" # there is no user root on travis
 }
 
 # if it is not installed on the right place, we install it on /usr/local/bin
@@ -75,8 +75,8 @@ function is_lib_bash_wine_up_to_date {
 
 function install_lib_bash_wine {
     clr_green "installing lib_bash_wine"
-    "$(cmd "sudo")" rm -fR /usr/local/lib_bash_wine
-    "$(cmd "sudo")" git clone https://github.com/bitranox/lib_bash_wine.git /usr/local/lib_bash_wine > /dev/null 2>&1
+    "$(cmd )" rm -fR /usr/local/lib_bash_wine
+    "$(cmd )" git clone https://github.com/bitranox/lib_bash_wine.git /usr/local/lib_bash_wine > /dev/null 2>&1
     set_lib_bash_wine_permissions
 }
 
@@ -87,8 +87,8 @@ function update_lib_bash_wine {
         (
             # create a subshell to preserve current directory
             cd /usr/local/lib_bash_wine  || fail "error in update_lib_bash_wine"
-            "$(cmd "sudo")" git fetch --all  > /dev/null 2>&1
-            "$(cmd "sudo")" git reset --hard origin/master  > /dev/null 2>&1
+            "$(cmd )" git fetch --all  > /dev/null 2>&1
+            "$(cmd )" git reset --hard origin/master  > /dev/null 2>&1
             set_lib_bash_wine_permissions
         )
 
