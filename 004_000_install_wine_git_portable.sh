@@ -102,7 +102,7 @@ function install_git_portable {
     WINEPREFIX=${wine_prefix}${IFS}\
     WINEARCH=${wine_arch}"
 
-    mkdir -p ${decompress_dir}  # here we dont need sudo because its the home directory
+    mkdir -p ${decompress_dir}  # here we dont need because its the home directory
 
     banner "Downloading latest Git Portable Binaries from ${latest_download_link_for_git_portable}"
     if [[ ! -f ${decompress_dir}/${portable_git_filename} ]]; then

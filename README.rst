@@ -1,4 +1,4 @@
-Install wine / python on wine
+Install wine / python on wine without sudo (for docker)
 =============================
 
 |license| |maintenance| |Build Status|
@@ -50,11 +50,11 @@ Prerequisites:
 .. code-block:: bash
 
     # local installation
-    sudo apt-get install git
-    sudo git clone https://github.com/bitranox/lib_bash_wine.git /usr/local/lib_bash_wine
-    sudo chmod -R 0755 /usr/local/lib_bash_wine
-    sudo chmod -R +x /usr/local/lib_bash_wine/*.sh
-    sudo /usr/local/lib_bash_wine/install_or_update.sh
+    apt-get install git
+    git clone https://github.com/bitranox/lib_bash_wine.git /usr/local/lib_bash_wine
+    chmod -R 0755 /usr/local/lib_bash_wine
+    chmod -R +x /usr/local/lib_bash_wine/*.sh
+    /usr/local/lib_bash_wine/install_or_update.sh
 
 Install WINE
 ============

@@ -51,7 +51,7 @@ wine_version=${wine_version_number}${IFS}\
 WINEPREFIX=${wine_prefix}${IFS}\
 WINEARCH=${wine_arch}"
 
-    mkdir -p "${decompress_dir}"  # here we dont need sudo because its the home directory
+    mkdir -p "${decompress_dir}"  # here we dont need because its the home directory
 
     banner "Downloading ${python_version_doc} Binaries from https://github.com/bitranox/binaries_${python_version_short}_wine/archive/master.zip"
 
