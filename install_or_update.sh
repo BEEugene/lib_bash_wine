@@ -47,8 +47,8 @@ function set_lib_bash_wine_permissions {
     user="$(printenv USER)"
     "$(cmd )" chmod -R 0755 /usr/local/lib_bash_wine
     "$(cmd )" chmod -R +x /usr/local/lib_bash_wine/*.sh
-    "$(cmd )" chown -R root /usr/local/lib_bash_wine || "$(cmd )" chown -R "${user}" /usr/local/lib_bash_wine || echo "giving up set owner" # there is no user root on travis
-    "$(cmd )" chgrp -R root /usr/local/lib_bash_wine || "$(cmd )" chgrp -R "${user}" /usr/local/lib_bash_wine || echo "giving up set group" # there is no user root on travis
+    "$(cmd )" chown -R root /usr/local/lib_bash_wine
+    "$(cmd )" chgrp -R root /usr/local/lib_bash_wine
 }
 
 # if it is not installed on the right place, we install it on /usr/local/bin
