@@ -41,8 +41,6 @@ include_dependencies
 
 
 function set_lib_bash_wine_permissions {
-    local user
-    user="$(printenv USER)"
     chmod -R 0755 /usr/local/lib_bash_wine
     chmod -R +x /usr/local/lib_bash_wine/*.sh
     chown -R root /usr/local/lib_bash_wine
@@ -62,7 +60,7 @@ function is_lib_bash_wine_installed {
 # this checks the install directory version - but it might be installed for testing somewere else - that will not be updated.
 function is_lib_bash_wine_up_to_date {
     local git_remote_hash git_local_hash
-    git_remote_hash=$(git --no-pager ls-remote --quiet https://github.com/bitranox/lib_bash_wine.git | grep HEAD | awk '{print $1;}' )
+    git_remote_hash=$(git --no-pager ls-remote --quiet https://github.com/BEEugene/lib_bash_wine.git | grep HEAD | awk '{print $1;}' )
     git_local_hash=$(cat /usr/local/lib_bash_wine/.git/refs/heads/master)
     if [[ "${git_remote_hash}" == "${git_local_hash}" ]]; then
         return 0
@@ -74,7 +72,7 @@ function is_lib_bash_wine_up_to_date {
 function install_lib_bash_wine {
     clr_green "installing lib_bash_wine"
      rm -fR /usr/local/lib_bash_wine
-     git clone https://github.com/bitranox/lib_bash_wine.git /usr/local/lib_bash_wine > /dev/null 2>&1
+     git clone https://github.com/BEEugene/lib_bash_wine.git /usr/local/lib_bash_wine > /dev/null 2>&1
     set_lib_bash_wine_permissions
 }
 

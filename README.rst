@@ -51,7 +51,7 @@ Prerequisites:
 
     # local installation
     apt-get install git
-    git clone https://github.com/bitranox/lib_bash_wine.git /usr/local/lib_bash_wine
+    git clone https://github.com/BEEugene/lib_bash_wine.git /usr/local/lib_bash_wine
     chmod -R 0755 /usr/local/lib_bash_wine
     chmod -R +x /usr/local/lib_bash_wine/*.sh
     /usr/local/lib_bash_wine/install_or_update.sh
